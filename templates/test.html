@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+
+<script src="http://127.0.0.1:8082/static/js/vendor/jquery-2.2.4.min.js">
+</script>
+<script>
+
+    
+    function update_info(id,buf)
+    {
+        var id = id;
+        //复杂一点的json的另一种形式  
+        var value2 = {"user_id":"123456","username":"coolcooldool"};  
+
+
+        // $('input[name=username]').removeAttr("readonly");//去除input元素的readonly属性
+        var obj2 = eval(value2);  
+        // alert(obj2);
+
+        // 赋值
+        $("#user_id").val(obj2.user_id);
+        $("#user_name").val(obj2.username);
+        $("#act").val("edit");
+
+        // 将input元素设置为readonly
+        $('#user_id').attr("readonly","readonly")
+        
+        $.post("/runJobBySaltApi/111111",{
+            accesstoken:"asdfasdf23esf23easdf23zfas3",
+            timestamp:"111111",
+            moduleName:"base.cyzz.start-townserver",
+            wanip:"119.90.49.211"
+        },
+               
+        function(data,status){
+            alert("数据: \n" + data + "\n状态: " + status);
+        });
+        
+        
+        alert("数据: \n" + id + "\n状态: "+buf);
+    }
+
+</script>
+</head>
+<body>
+
+<button onclick="update_info(8,99)" >发送一个 HTTP POST 请求页面并获取返回内容</button>
+
+</body>
+</html>
